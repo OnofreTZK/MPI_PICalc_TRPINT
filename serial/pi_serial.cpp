@@ -93,16 +93,3 @@ int main( int argc, char *argv[] )
 }
 
 
-/*
- *  monteCarloPi(n)
-02. |   acertos ← 0
-03. |   para i ← 0 até n
-04. |   |   x ← sorteie um número real entre 0 e 1
-05. |   |   y ← sorteie um número real entre 0 e 1
-06. |   |   se(x * x + y * y < 1)
-07. |   |   |   acertos ← acertos + 1
-08. |   |   fim_se
-09. |   fim_para
-10. |   retorne 4 * acertos / n
-11. fim_monteCarloPi*/
-
