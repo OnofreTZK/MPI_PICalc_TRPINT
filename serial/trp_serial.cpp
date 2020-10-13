@@ -1,53 +1,42 @@
 #include <iostream>
+#include <math.h>
+#include <random>
 #include <chrono>
 #include <iomanip>
-#include <random>
 
-double generate_number()
-{
-      std::random_device seed;
-
-      std::mt19937 gen( seed() );
-
-      std::uniform_real_distribution<double> distr(0.0, 1.0);
-
-      return distr( gen );
-}
-
-
-double monteCarlo(int n) 
+// Algorithm 2
+double trapezoidal_rule(double a, double b, long int n)
 {
 
-    int correct_hits = 0;
+    double x_i; //x1
+	double h = (b - a) / n;
+	double total = (sin(a) + sin(b)) / 2;
 
-    for( int i; i < n; i++ ) 
+    // Loop for the sum of y1 to yn
+	for (int i = 1; i < n; i++)
     {
+		x_i = a + i * h;
+		total += sin(x_i);
+	}
+	
+    total = h * total;
     
-        double x = generate_number();
-        double y = generate_number();
-
-        if( ( ( x * x ) + ( y * y ) ) < 1 ) 
-        {
-        
-            correct_hits++;
-        }
-    }
-
-    return (double) ( 4.0 * correct_hits / n );
+    return total; 
 }
 
 
-int main( int argc, char *argv[] ) 
+int main(int argc, char *argv[])
 {
-
-    if( argc > 2 )
+    if( argc > 4 )
     {
-        std::cout << "Too many arguments! Only one(1) necessary." << std::endl;
+        std::cout << "Too many arguments! Only 3 are needed( point a, point b and number of trapezes )." 
+                  << std::endl;
         return EXIT_FAILURE;
     }
-    else if( argc == 1 )
+    else if( argc < 4 )
     {
-        std::cout << "Please give a integer value to N as an argument" << std::endl;
+        std::cout << "Please give at least 3 arguments( point a, point b and number of trapezes )." 
+                  << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -61,7 +50,7 @@ int main( int argc, char *argv[] )
     {
         // - START TIMER -
         std::chrono::steady_clock::time_point START = std::chrono::steady_clock::now();
-        double pi = monteCarlo(atoi(argv[1]));
+        double final_area = trapezoidal_rule( atoi(argv[1]), atoi(argv[2]), atoi(argv[3]) );
         std::chrono::steady_clock::time_point STOP = std::chrono::steady_clock::now();
         // - STOP TIMER -
 
@@ -75,13 +64,13 @@ int main( int argc, char *argv[] )
         
         std::cout << std::fixed
                   << std::setprecision(3)
-                  << "N = " 
-                  << argv[1]
-                  << " | PI = " 
-                  << pi 
+                  << "Number of trapezes = " 
+                  << argv[3]
+                  << " | AREA = " 
+                  << final_area 
                   << " | Exec time(" 
                   << testCount+1 
-                  << ")= "
+                  << ")= " 
                   << exec_time 
                   << "s |" << std::endl;
         
@@ -90,9 +79,6 @@ int main( int argc, char *argv[] )
     }
 
     std::cout << "\n\nArithmetic mean of the time = " << arithmetic_mean << "s" << std::endl;
-
+      
     return EXIT_SUCCESS;
-
 }
-
-
