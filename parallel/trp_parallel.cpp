@@ -128,7 +128,6 @@ int main(int argc, char *argv[])
             }
         }
 
-       /* To generate file with time samples.
         std::cout << std::fixed
                   << std::setprecision(3)
                   << "Number of trapezes = " 
@@ -138,11 +137,11 @@ int main(int argc, char *argv[])
                   << " | Exec time = "  
                   << final_time 
                   << "s |" << std::endl;
-                   */
+                   /*
         std::cout << std::fixed
                   << std::setprecision(3)
                   << final_time
-                  << std::endl;
+                  << std::endl;*/
             
 
     }
