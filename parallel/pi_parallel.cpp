@@ -35,7 +35,7 @@ double monteCarlo(long int n)
     }
 
     return correct_hits;
-    //return (double) ( 4.0 * correct_hits / n );
+
 }
 
 
@@ -137,7 +137,7 @@ int main( int argc, char *argv[] )
    
     
 
-        
+       /* to generate file with time samples. 
         std::cout << std::fixed
                   << std::setprecision(3)
                   << "N = " 
@@ -147,6 +147,11 @@ int main( int argc, char *argv[] )
                   << " | Exec time = "
                   << final_time 
                   << "s |" << std::endl;
+                  */
+        std::cout << std::fixed
+                  << std::setprecision(3)
+                  << final_time
+                  << std::endl;
     }
         
 

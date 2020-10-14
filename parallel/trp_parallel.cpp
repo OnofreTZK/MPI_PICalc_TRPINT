@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     // Gettin a, b and n.
     double a = atoi(argv[1]);
     double b = atoi(argv[2]);
-    long int n = atoi(argv[3]);
+    long int n = atol(argv[3]);
 
     // This var will be useful to calculate the point ranges of each proc
     double height = ( b - a ) / n;
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        
+       /* To generate file with time samples.
         std::cout << std::fixed
                   << std::setprecision(3)
                   << "Number of trapezes = " 
@@ -138,7 +138,11 @@ int main(int argc, char *argv[])
                   << " | Exec time = "  
                   << final_time 
                   << "s |" << std::endl;
-    
+                   */
+        std::cout << std::fixed
+                  << std::setprecision(3)
+                  << final_time
+                  << std::endl;
             
 
     }

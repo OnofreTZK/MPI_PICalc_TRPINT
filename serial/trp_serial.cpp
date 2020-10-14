@@ -13,7 +13,7 @@ double trapezoidal_rule(double a, double b, long int n)
 	double total = (sin(a) + sin(b)) / 2;
 
     // Loop for the sum of y1 to yn
-	for (int i = 1; i < n; i++)
+	for ( long int i = 1; i < n; i++)
     {
 		x_i = a + i * h;
 		total += sin(x_i);
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     {
         // - START TIMER -
         std::chrono::steady_clock::time_point START = std::chrono::steady_clock::now();
-        double final_area = trapezoidal_rule( atoi(argv[1]), atoi(argv[2]), atoi(argv[3]) );
+        double final_area = trapezoidal_rule( atoi(argv[1]), atoi(argv[2]), atol(argv[3]) );
         std::chrono::steady_clock::time_point STOP = std::chrono::steady_clock::now();
         // - STOP TIMER -
 
