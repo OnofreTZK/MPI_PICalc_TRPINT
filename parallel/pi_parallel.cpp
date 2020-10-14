@@ -21,7 +21,7 @@ double monteCarlo(long int n)
 
     int correct_hits = 0;
 
-    for( int i; i < n; i++ ) 
+    for( int i = 0; i < n; i++ ) 
     {
     
         double x = generate_number();
